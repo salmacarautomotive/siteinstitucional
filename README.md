@@ -41,7 +41,7 @@ Site estático (HTML/CSS/JS puro) · leads salvos no **Supabase** · deploy no *
 ### 3. Netlify (colocar no ar)
 1. **Add new site > Import an existing project > GitHub** e escolha o repositório.
 2. Antes de clicar em Deploy, abra **Environment variables** e cadastre `SUPABASE_URL` e `SUPABASE_ANON_KEY` (e, se já tiver, as variáveis da seção SEO abaixo).
-3. Cadastre também `SECRETS_SCAN_OMIT_KEYS` = `SUPABASE_URL,SUPABASE_ANON_KEY` (já vai no `netlify.toml`, mas não custa garantir). Sem isso o Netlify acusa "secrets found" e o build falha.
+3. Cadastre também a variável `SECRETS_SCAN_OMIT_KEYS` **apenas no painel do Netlify**, com os nomes das duas variáveis do Supabase separados por vírgula, sem espaço. A chave anon é pública por natureza (a segurança vem do RLS), mas sem isso o Netlify acusa "secrets found" e o build falha. Não escreva esse valor em nenhum arquivo do repositório, senão o scanner acusa o próprio valor.
 4. Clique **Deploy**. Cada envio novo ao GitHub gera um novo deploy (15 créditos), então junte as mudanças e envie de uma vez.
 
 ### Testar localmente (opcional)
